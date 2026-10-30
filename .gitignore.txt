@@ -1,0 +1,33 @@
+# Angular
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# Spring Boot
+backend/target/
+backend/build/
+
+# Java
+*.class
+
+# IDE
+.idea/
+.vscode/
+.settings/
+.project
+.classpath
+
+# NetBeans
+nbproject/private/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log

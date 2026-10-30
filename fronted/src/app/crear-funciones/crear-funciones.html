@@ -1,0 +1,53 @@
+<h3>Cree una funcion nueva:</h3>
+<form [formGroup]="formulario" (ngSubmit)="guardarFuncion()">
+    <label>Fecha:</label>
+    <input type="text" formControlName="fecha">
+    @if(formulario.get('fecha')?.invalid 
+    && formulario.get('fecha')?.touched){
+        <div> La fecha es obligatoria</div>
+    }
+    <br><br>
+    <label>Hora:</label>
+    <input type="text" formControlName="hora">
+    @if(formulario.get('hora')?.invalid 
+    && formulario.get('hora')?.touched){
+        <div> La hora es obligatoria</div>
+    }
+    <br><br>
+    <label>Precio de entrada:</label>
+    <input type="text" formControlName="precioEntrada">
+    @if(formulario.get('precioEntrada')?.invalid 
+    && formulario.get('precioEntrada')?.touched){
+        <div> El precio de entrada es obligatorio</div>
+    }
+    <br><br>
+    <label>ID Película:</label>
+    <input type="number" formControlName="idPelicula">
+    <br><br>
+    <label>ID Sala:</label>
+    <input type="number" formControlName="idSala">
+    <br><br>
+    <button type = "submit">Ingresar</button>
+
+</form>
+<h2>Funcion creadas:</h2>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Precio de entrada</th>
+        <th>Fecha creacion</th>
+    </thead>
+    <tbody>
+        @for(funcion of funciones; track $index){
+        <tr>
+            <td>{{funcion.idFuncion}}</td>
+            <td>{{funcion.fecha | date:'dd/MM/yyyy'}}</td>
+            <td>{{funcion.hora }}</td>
+            <td>{{funcion.precioEntrada}}</td>
+            <td>{{funcion.fechaCreacion | date}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

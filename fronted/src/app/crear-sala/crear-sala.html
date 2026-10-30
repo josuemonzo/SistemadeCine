@@ -1,0 +1,47 @@
+<h3>Cree una sala nueva:</h3>
+<form [formGroup]="formulario" (ngSubmit)="guardarSala()">
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombre">
+    @if(formulario.get('nombre')?.invalid 
+    && formulario.get('nombre')?.touched){
+        <div> El nombre es obligatorio</div>
+    }
+    <br><br>
+    <label>Filas:</label>
+    <input type="text" formControlName="fila">
+    @if(formulario.get('fila')?.invalid 
+    && formulario.get('fila')?.touched){
+        <div> El numero de filas es obligatorio</div>
+    }
+    <br><br>
+    <label>Asientos por fila:</label>
+    <input type="text" formControlName="asientos_por_fila">
+    @if(formulario.get('asientos_por_fila')?.invalid 
+    && formulario.get('asientos_por_fila')?.touched){
+        <div> El numero de asientos es obligatorio</div>
+    }
+<br><br>
+    <button type = "submit">Ingresar</button>
+
+</form>
+<h2>Salas creadas:</h2>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Filas</th>
+        <th>Asientos por fila</th>
+        <th>Fecha creacion</th>
+    </thead>
+    <tbody>
+        @for(sala of sala; track sala.id_sala){
+        <tr>
+            <td>{{sala.idSala}}</td>
+            <td>{{sala.nombre}}</td>
+            <td>{{sala.filas}}</td>
+            <td>{{sala.asientosPorFila}}</td>
+            <td>{{sala.fechaCreacion | date}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

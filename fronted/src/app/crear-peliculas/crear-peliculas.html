@@ -1,0 +1,49 @@
+<h3>Cree una pelicula nueva:</h3>
+<form [formGroup]="formulario" (ngSubmit)="guardarPelicula()">
+    <label>Titulo:</label>
+    <input type="text" formControlName="titulo">
+    @if(formulario.get('titulo')?.invalid 
+    && formulario.get('titulo')?.touched){
+        <div> El titulo es obligatorio</div>
+    }
+    <br><br>
+    <label >Sipnosis:</label>
+    <div class="form-floating">
+    <input type="text" formControlName="sipnosis" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 60px" style="width: 560px">
+    @if(formulario.get('sipnosis')?.invalid 
+    && formulario.get('sipnosis')?.touched){
+        <div> La sinopsis es obligatoria</div>
+    }</div>
+    <br><br>
+    <label>Duracion en minutos:</label>
+    <input type="text" formControlName="duracion">
+    @if(formulario.get('duracion')?.invalid 
+    && formulario.get('duracion')?.touched){
+        <div> La duracion es obligatoria</div>
+    }
+
+    <br><br>
+    <button type = "submit">Ingresar</button>
+
+</form>
+<h2>Peliculas creadas:</h2>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Titulo</th>
+        <th>sipnosis</th>
+        <th>Duracion en minutos</th>
+        <th>Fecha creacion</th>
+    </thead>
+    <tbody>
+        @for(pelicula of peliculas; track $index){
+        <tr>
+            <td>{{pelicula.idPelicula}}</td>
+            <td>{{pelicula.titulo}}</td>
+            <td>{{pelicula.sipnosis}}</td>
+            <td>{{pelicula.duracionMinutos}}</td>
+            <td>{{pelicula.fechaCreacion | date}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

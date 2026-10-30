@@ -1,0 +1,18 @@
+table, th, td {
+  border: 1px solid black; /* Grosor, estilo y color de la línea */
+}
+
+table {
+  border-collapse: collapse; /* Une las líneas dobles en una sola */
+  width: 100%;
+}
+
+th, td {
+  padding: 8px; /* Espacio interno para que no se vea amontonado */
+}
+button {
+  width: 100px;  /* Ancho fijo */
+  height: 40px;  /* Alto fijo */
+  font-size: 16px;
+  background-color: #E00000;
+}

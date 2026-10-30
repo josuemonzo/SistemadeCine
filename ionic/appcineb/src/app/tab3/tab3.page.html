@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Peliculas creadas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    @for(pelicula of peliculas; track pelicula.idPelicula){
+    <ion-item>
+      <ion-label>{{pelicula.idPelicula}}</ion-label>
+      <ion-label>{{pelicula.titulo}}</ion-label>
+      <ion-label>{{pelicula.sipnosis}}</ion-label>
+      <ion-label>{{pelicula.duracionMinutos}}</ion-label>
+      <ion-label>{{pelicula.fechaCreacion | date}}</ion-label>
+    </ion-item>
+    }
+
+  </ion-list>
+</ion-content>

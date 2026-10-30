@@ -1,0 +1,29 @@
+<h3>Cree un genero para alguna pelicula:</h3>
+<form [formGroup]="formulario" (ngSubmit)="guardarGenero()">
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombre">
+    @if(formulario.get('nombre')?.invalid 
+    && formulario.get('nombre')?.touched){
+        <div> El nombre es obligatorio</div>
+    }
+<br><br>
+    <button type = "submit">Ingresar</button>
+
+</form>
+<h2>Genero creados:</h2>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Fecha creacion</th>
+    </thead>
+    <tbody>
+        @for(genero of genero; track genero.id_genero){
+        <tr>
+            <td>{{genero.idgenero}}</td>
+            <td>{{genero.nombre}}</td>
+            <td>{{genero.fechaCreacion | date}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,61 @@
+<h3>Cree un usuario nuevo:</h3>
+<form [formGroup]="formulario" (ngSubmit)="guardarUsuario()">
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombre">
+    @if(formulario.get('nombre')?.invalid 
+    && formulario.get('nombre')?.touched){
+        <div> El nombre es obligatorio</div>
+    }
+    <br><br>
+    <label>Email:</label>
+    <input type="email" formControlName="email">
+    @if(formulario.get('email')?.invalid 
+    && formulario.get('email')?.touched){
+        <div> El email es obligatorio</div>
+    }
+    <br><br>
+    <label>Password:</label>
+    <input type="password" formControlName="password">
+    @if(formulario.get('password')?.invalid 
+    && formulario.get('password')?.touched){
+        <div> El password es obligatorio</div>
+    }
+    <br><br>
+    <label>Tipo:</label>
+    <select type="text" formControlName="tipo">
+
+        @for(tipo of tipos; track tipo.idTipoUsuario ){
+            <option value="{{tipo.idTipoUsuario}}">{{tipo.descripcion}}</option>
+        }
+    </select>
+    @if(formulario.get('tipo')?.invalid 
+    && formulario.get('tipo')?.touched){
+        <div> El tipo es obligatorio</div>
+    }
+    <br><br>
+    <button type = "submit">Ingresar</button>
+
+</form>
+<h2>Usuarios creados:</h2>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Tipo</th>
+        <th>Fecha creacion</th>
+    </thead>
+    <tbody>
+        @for(usuario of usuarios; track $index){
+        <tr>
+            <td>{{usuario.idUsuario}}</td>
+            <td>{{usuario.nombres}}</td>
+            <td>{{usuario.correo}}</td>
+            <td>{{usuario.contrasena}}</td>
+            <td>{{usuario.tipo | tipoUsuario :tipos}}</td>
+            <td>{{usuario.fechaCreacion | date}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

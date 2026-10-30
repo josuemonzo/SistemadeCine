@@ -1,0 +1,28 @@
+<h3>Cree una clasificacion para alguna pelicula:</h3>
+<form [formGroup]="formulario" (ngSubmit)="guardarClasificacion()">
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombre">
+    @if(formulario.get('nombre')?.invalid 
+    && formulario.get('nombre')?.touched){
+        <div> El nombre es obligatorio</div>
+    }
+<br><br>
+    <button type = "submit">Ingresar</button>
+</form>
+<h2>Clasificaciones creadas:</h2>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Fecha creacion</th>
+    </thead>
+    <tbody>
+        @for(clasificacion of clasificacion; track clasificacion.id_clasificacion){
+        <tr>
+            <td>{{clasificacion.idClasificacion}}</td>
+            <td>{{clasificacion.nombre}}</td>
+            <td>{{clasificacion.fechaCreacion | date}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

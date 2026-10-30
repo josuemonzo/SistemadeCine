@@ -1,0 +1,38 @@
+<h3>Reserve un ticket nuevo:</h3>
+<form [formGroup]="formulario" (ngSubmit)="guardarTickets()">
+    <label>Numero de Reserva:</label>
+    <input type="text" formControlName="numeroReserva">
+    @if(formulario.get('numeroReserva')?.invalid 
+    && formulario.get('numeroReserva')?.touched){
+        <div> El numero de reserva es obligatorio</div>
+    }
+    <br><br>
+    <label>Fecha de Reserva:</label>
+    <input type="email" formControlName="fechaReserva">
+    @if(formulario.get('fechaReserva')?.invalid 
+    && formulario.get('fechaReserva')?.touched){
+        <div> La fecha de reserva es obligatoria</div>
+    }
+    <br><br>
+    <button type = "submit">Ingresar</button>
+
+</form>
+<h2>Tickets creados:</h2>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Numero de reserva</th>
+        <th>Fecha de reserva</th>
+        <th>Fecha creacion</th>
+    </thead>
+    <tbody>
+        @for(ticket of tickets; track $index){
+        <tr>
+            <td>{{ticket.idTickets}}</td>
+            <td>{{ticket.numeroReserva}}</td>
+            <td>{{ticket.fechaReserva}}</td>
+            <td>{{ticket.fechaCreacion | date}}</td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,57 @@
+<h3>Cree un anuncio nuevo:</h3>
+<form [formGroup]="formulario" (ngSubmit)="guardarAnuncios()">
+    <label>Titulo</label>
+    <input type="text" formControlName="titulo">
+    @if(formulario.get('titulo')?.invalid 
+    && formulario.get('titulo')?.touched){
+        <div> El titulo es obligatorio</div>
+    }
+    <br><br>
+    <label>Descripcion:</label>
+    <div class="form-floating">
+    <input type="text" formControlName="descripcion" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 60px" style="width: 560px">
+    @if(formulario.get('descripcion')?.invalid 
+    && formulario.get('descripcion')?.touched){
+        <div> La descripcion es obligatoria</div>
+    }</div>
+    <br>
+    <label>Fecha de publicacion:</label>
+    <input type="text" formControlName="fecha_publicacion">
+    @if(formulario.get('fecha_publicacion')?.invalid 
+    && formulario.get('fecha_publicacion')?.touched){
+        <div> La fecha es obligatoria</div>
+    }
+    <br>
+    <label>Tipo:</label>
+    <input type="text" formControlName="tipo">
+    @if(formulario.get('tipo')?.invalid 
+    && formulario.get('tipo')?.touched){
+        <div> El tipo es obligatorio</div>
+    }
+    <br><br>
+    <button type = "submit">Ingresar</button>
+
+</form>
+<h2>Anuncios creados:</h2>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Titulo</th>
+        <th>Descripcion</th>
+        <th>Fecha publicacion</th>
+        <th>Tipo</th>
+        <th>Fecha creacion</th>
+    </thead>
+    <tbody>
+        @for(anuncio of anuncios; track $index){
+        <tr>
+            <td>{{anuncio.idAnuncio}}</td>
+            <td>{{anuncio.descripcion}}</td>
+            <td>{{anuncio.fechaPublicaion}}</td>
+            <td>{{anuncio.titulo}}</td>
+            <td>{{anuncio.tipo}}</td>
+            <td>{{anuncio.fechaCreacion | date}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
